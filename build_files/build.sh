@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y just tmux
+dnf5 install -y atuin distrobox just tmux
 
 # install SumoLogic collector
 dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
