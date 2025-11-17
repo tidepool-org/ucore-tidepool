@@ -14,6 +14,7 @@ dnf5 install -y atuin distrobox just tmux
 
 # install SumoLogic collector
 dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
+/opt/SumoCollector/collector install
 
 # Use a COPR Example:
 #
