@@ -12,6 +12,9 @@ set -ouex pipefail
 # this installs a package from fedora repos
 dnf5 install -y just tmux
 
+# install SumoLogic collector
+dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
