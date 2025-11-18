@@ -1,0 +1,11 @@
+[Unit]
+Description=SumoLogic Collector
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/opt/SumoCollector/collector start sysd
+ExecStop=/opt/SumoCollector/collector stop sysd
+
+[Install]
+WantedBy=multi-user.target
