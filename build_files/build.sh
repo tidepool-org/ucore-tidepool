@@ -16,6 +16,9 @@ dnf5 install -y atuin distrobox just tmux
 dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
 /opt/SumoCollector/collector install
 
+# install MongoDB shell
+dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
