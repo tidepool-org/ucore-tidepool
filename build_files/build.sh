@@ -31,3 +31,4 @@ rsync -rvK /ctx/files/etc/ /etc/
 #### Example for enabling a System Unit File
 
 #systemctl enable podman.socket
+systemctl enable collector.service
