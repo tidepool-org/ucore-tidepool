@@ -13,7 +13,12 @@ set -ouex pipefail
 dnf5 install -y atuin distrobox gdu just mosh tmux uv
 
 # install SumoLogic collector
+# ref: https://developers.redhat.com/articles/2025/09/23/customize-rhel-coreos-on-cluster-image-mode#key_concept__the__var_limitation
+mkdir /var/opt
+echo 'g sumologic_collector' > /usr/lib/sysusers.d/sumocollector.conf
 dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
+mv /var/opt/SumoCollector /usr/lib/SumoCollector
+echo 'L /opt/SumoCollector - - - - /usr/lib/SumoCollector' > /usr/lib/tmpfiles.d/SumoCollector.conf
 
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
