@@ -19,6 +19,7 @@ echo 'g sumologic_collector' > /usr/lib/sysusers.d/sumocollector.conf
 dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
 mv /var/opt/SumoCollector /usr/lib/SumoCollector
 rm -rf /usr/lib/SumoCollector/logs
+mkdir /var/log/SumoCollector
 echo 'L /opt/SumoCollector - - - - /usr/lib/SumoCollector' > /usr/lib/tmpfiles.d/SumoCollector.conf
 echo 'L /usr/lib/SumoCollector/logs - - - - /var/log/SumoCollector' >> /usr/lib/tmpfiles.d/SumoCollector.conf
 
