@@ -40,3 +40,4 @@ rsync -rvK /ctx/files/etc/ /etc/
 
 #systemctl enable podman.socket
 systemctl enable collector.service
+systemctl enable tailscaled.service
