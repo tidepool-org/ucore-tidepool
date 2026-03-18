@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y atuin distrobox gdu just mosh tmux uv
+dnf5 install -y atuin distrobox gdu just mosh qemu-guest-agent tmux uv
 
 # install SumoLogic collector
 # ref: https://developers.redhat.com/articles/2025/09/23/customize-rhel-coreos-on-cluster-image-mode#key_concept__the__var_limitation
