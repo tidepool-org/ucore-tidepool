@@ -28,6 +28,7 @@ dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_
 
 # deploy system configuration files
 rsync -rvK /ctx/files/etc/ /etc/
+rsync -rvK /ctx/files/usr/ /usr/
 
 # Use a COPR Example:
 #
