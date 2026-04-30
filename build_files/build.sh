@@ -42,3 +42,4 @@ rsync -rvK /ctx/files/usr/ /usr/
 #systemctl enable podman.socket
 systemctl enable collector.service
 systemctl enable tailscaled.service
+systemctl enable prometheus-node-exporter.service
