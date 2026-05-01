@@ -28,6 +28,7 @@ rsync -rvK /ctx/files/usr/ /usr/
 
 ## deploy SumoLogic collector quadlet
 adduser sumologic
+mkdir -p /var/lib/systemd/linger
 touch /var/lib/systemd/linger/sumologic
 chmod 0644 /var/lib/systemd/linger/sumologic
 mkdir -p /home/sumologic/.config/containers/systemd
