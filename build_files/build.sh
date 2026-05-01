@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y atuin distrobox gdu just mosh node-exporter qemu-guest-agent tmux uv
+dnf5 install -y atuin distrobox gdu just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv
 
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
@@ -33,7 +33,6 @@ chmod 0644 /var/lib/systemd/linger/sumologic
 mkdir -p /home/sumologic/.config/containers/systemd
 rsync -rvK /ctx/files/collector.container /home/sumologic/.config/containers/systemd/collector.container
 chown -R sumologic:sumologic /home/sumologic/.config
-echo 'net.ipv4.ip_unprivileged_port_start=514' > /etc/sysctl.d/50-sumologic.conf
 
 #### Example for enabling a System Unit File
 
