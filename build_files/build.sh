@@ -12,17 +12,6 @@ set -ouex pipefail
 # this installs a package from fedora repos
 dnf5 install -y atuin distrobox gdu just mosh node-exporter qemu-guest-agent tmux uv
 
-# install SumoLogic collector
-# ref: https://developers.redhat.com/articles/2025/09/23/customize-rhel-coreos-on-cluster-image-mode#key_concept__the__var_limitation
-mkdir /var/opt
-echo 'g sumologic_collector' > /usr/lib/sysusers.d/sumocollector.conf
-dnf5 install -y https://download-collector.us2.sumologic.com/rest/download/rpm/64
-mv /var/opt/SumoCollector /usr/lib/SumoCollector
-rm -rf /usr/lib/SumoCollector/logs
-mkdir /var/log/SumoCollector
-echo 'L /opt/SumoCollector - - - - /usr/lib/SumoCollector' > /usr/lib/tmpfiles.d/SumoCollector.conf
-echo 'L /usr/lib/SumoCollector/logs - - - - /var/log/SumoCollector' >> /usr/lib/tmpfiles.d/SumoCollector.conf
-
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
 
@@ -37,9 +26,17 @@ rsync -rvK /ctx/files/usr/ /usr/
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+## deploy SumoLogic collector quadlet
+adduser sumologic
+touch /var/lib/systemd/linger/sumologic
+chmod 0644 /var/lib/systemd/linger/sumologic
+mkdir -p /home/sumologic/.config/containers/systemd
+rsync -rvK /ctx/files/collector.container /home/sumologic/.config/containers/systemd/collector.container
+chown -R sumologic:sumologic /home/sumologic/.config
+echo 'net.ipv4.ip_unprivileged_port_start=514' > /etc/sysctl.d/50-sumologic.conf
+
 #### Example for enabling a System Unit File
 
-#systemctl enable podman.socket
-systemctl enable collector.service
 systemctl enable tailscaled.service
 systemctl enable prometheus-node-exporter.service
+systemctl enable journal_syslog.service

@@ -1,0 +1,15 @@
+[Unit]
+Description=SumoLogic Collector Quadlet
+[Container]
+ContainerName=collector
+Image=docker.io/sumologic/collector:latest-syslog
+AutoUpdate=registry
+PublishPort=514:514/tcp
+PublishPort=514:514/udp
+Environment=SUMO_ACCESS_ID_FILE=/tmp/sumologic_access/sumologic_access_id
+Environment=SUMO_ACCESS_KEY_FILE=/tmp/sumologic_access/sumologic_access_key
+Volume=%h/.config/sumologic:/tmp/sumologic_access:Z
+[Service]
+Restart=always
+[Install]
+WantedBy=default.target
