@@ -15,12 +15,12 @@ rsync -rvK /ctx/files/etc/ /etc/
 rsync -rvK /ctx/files/usr/ /usr/
 
 ## deploy SumoLogic collector quadlet
-adduser sumologic
+adduser -u 1001 sumologic
 mkdir -p /var/lib/systemd/linger
 touch /var/lib/systemd/linger/sumologic
 chmod 0644 /var/lib/systemd/linger/sumologic
-mkdir -p /usr/share/containers/users/$(id -u sumologic)
-rsync -rvK /ctx/files/collector.container /usr/share/containers/users/$(id -u sumologic)/
+mkdir -p /usr/share/containers/users/1001
+rsync -rvK /ctx/files/collector.container /usr/share/containers/users/1001/
 
 #### Enable System Unit Files
 
