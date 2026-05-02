@@ -20,7 +20,7 @@ mkdir -p /var/lib/systemd/linger
 touch /var/lib/systemd/linger/sumologic
 chmod 0644 /var/lib/systemd/linger/sumologic
 mkdir -p /usr/share/containers/users/1001
-rsync -rvK /ctx/files/collector.container /usr/share/containers/users/1001/
+rsync -rvK /ctx/files/collector.container /usr/share/containers/systemd/users/1001/
 
 #### Enable System Unit Files
 
