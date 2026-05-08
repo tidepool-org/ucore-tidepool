@@ -5,7 +5,7 @@ set -ouex pipefail
 ### Install packages
 
 # this installs packages from fedora repos
-dnf5 install -y atuin distrobox gdu just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv
+dnf5 install -y atuin distrobox gdu just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq
 
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
