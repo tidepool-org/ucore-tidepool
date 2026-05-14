@@ -5,7 +5,7 @@ set -ouex pipefail
 ### Install packages
 
 # this installs packages from fedora repos
-dnf5 install -y atuin distrobox gdu just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq zsh
+dnf5 install -y atuin distrobox gdu glibc-langpack-en just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq zsh
 
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_64/RPMS/mongodb-mongosh-2.5.9.x86_64.rpm
@@ -13,6 +13,9 @@ dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.2/x86_
 # deploy system configuration files
 rsync -rvK /ctx/files/etc/ /etc/
 rsync -rvK /ctx/files/usr/ /usr/
+
+# set en_US.UTF-8 locale
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 ## deploy SumoLogic collector quadlet
 adduser -u 1001 sumologic
