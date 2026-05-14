@@ -14,9 +14,6 @@ dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.3/x86_
 rsync -rvK /ctx/files/etc/ /etc/
 rsync -rvK /ctx/files/usr/ /usr/
 
-# set en_US.UTF-8 locale
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-
 ## deploy SumoLogic collector quadlet
 adduser -u 1001 sumologic
 mkdir -p /var/lib/systemd/linger
