@@ -2,9 +2,6 @@
 
 set -ouex pipefail
 
-echo "testing"
-find / -name 'locale.conf' -print -exec cat {} \;
-
 ### Install packages
 
 # this installs packages from fedora repos
