@@ -2,10 +2,13 @@
 
 set -ouex pipefail
 
+echo "testing"
+find / -name 'locale.conf' -print -exec cat {} \;
+
 ### Install packages
 
 # this installs packages from fedora repos
-dnf5 install -y atuin distrobox gdu glibc-langpack-en just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq zsh
+dnf5 install -y atuin btop distrobox gdu glibc-langpack-en htop just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq zsh
 
 # install MongoDB shell
 dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.3/x86_64/RPMS/mongodb-mongosh-2.8.3.x86_64.rpm
