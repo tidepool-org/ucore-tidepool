@@ -8,7 +8,10 @@ set -ouex pipefail
 dnf5 install -y atuin btop distrobox gdu glibc-langpack-en htop just mosh nmap-ncat node-exporter qemu-guest-agent tmux uv yq zsh
 
 # install MongoDB shell
-dnf5 install -y https://repo.mongodb.org/yum/redhat/9Server/mongodb-org/8.3/x86_64/RPMS/mongodb-mongosh-2.8.3.x86_64.rpm
+MONGODBVERSION="8.3"
+RHELVERSION="10Server"
+ARCHITECTURE="$(uname -m)"
+dnf5 install -y "https://repo.mongodb.org/yum/redhat/${RHELVERSION}/mongodb-org/${MONGODBVERSION}/${ARCHITECTURE}/RPMS/mongodb-mongosh-2.8.3.${ARCHITECTURE}.rpm"
 
 # deploy system configuration files
 rsync -rvK /ctx/files/etc/ /etc/
